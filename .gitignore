@@ -90,3 +90,6 @@ ENV/
 
 # Database file
 db.sqlite3
+
+# Migration python file
+*/migrations/*

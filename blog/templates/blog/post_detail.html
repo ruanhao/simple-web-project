@@ -3,9 +3,7 @@
 {% block content %}
     <div>
 	<h1>{{ post.title }}</h1>
-	{% if post.published_date %}
-	    <p>published: {{ post.published_date }}</p>
-	{% endif %}
+	<p>created: {{ post.created_date }}</p>
 	<p>{{ post.text | linebreaksbr }}</p>
     </div>
     <a href="{% url 'post_edit' pk=post.pk %}">edit</a>

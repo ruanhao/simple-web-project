@@ -7,7 +7,7 @@ from .forms import PostForm
 # Create your views here.
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.all().order_by('created_date')
     return render(request, 'blog/post_list.html', locals())
 
 @login_required
@@ -22,7 +22,6 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
         else:
@@ -39,7 +38,6 @@ def post_edit(request, pk):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
         else:
