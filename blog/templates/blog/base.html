@@ -3,12 +3,12 @@
 <html lang="en">
     <head>
 	<meta charset="utf-8">
-	<title>My blog</title>
+	<title>Blog</title>
 	{% bootstrap_css %}
 	{% bootstrap_javascript %}
     </head>
     <body>
-	<h1><a href="{% url 'post_list' %}">Haoruan's Blog</a></h1>
+	<h1><a href="{% url 'post_list' %}">Blogs</a></h1>
 	{% if user.is_authenticated %}
 	    <p>
 		hello, {{ user.username }}
