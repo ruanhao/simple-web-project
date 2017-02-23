@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, Http404, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Post
@@ -24,8 +24,6 @@ def post_new(request):
             post.author = request.user
             post.save()
             return redirect('post_detail', pk=post.pk)
-        else:
-            raise Http404
     else:                       # GET
         form = PostForm()
 
@@ -40,8 +38,6 @@ def post_edit(request, pk):
             post = form.save(commit=False)
             post.save()
             return redirect('post_detail', pk=post.pk)
-        else:
-            raise Http404
     else:                       # GET
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', locals())

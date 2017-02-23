@@ -1,4 +1,4 @@
-from django.shortcuts import render, Http404, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
@@ -11,8 +11,6 @@ def register(request):
             new_user = form.save()
             login(request, new_user)
             return redirect('post_list')
-        else:
-            raise Http404
     else:                       # GET
         form = UserCreationForm()
     return render(request, 'users/register.html', locals())
