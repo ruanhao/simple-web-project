@@ -17,11 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from django.contrib.auth import views
+from users import views as u_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/login/$', views.login, {'template_name': 'users/login.html'}, name='login'),
     url(r'^users/logout/$', views.logout, {'next_page': '/blog/'}, name='logout'),
+    url(r'^users/register/$', u_views.register, name='register'),
 
     url(r'^blog/', include('blog.urls')),
 ]
