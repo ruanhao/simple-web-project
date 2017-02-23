@@ -3,7 +3,7 @@
 {% block content %}
     <div>
 	<h1>{{ post.title }}</h1>
-	<p>created: {{ post.created_date }}</p>
+	<p>created: {{ post.created_date }} by {{ post.author.username }}</p>
 	<p>{{ post.text | linebreaksbr }}</p>
     </div>
     {% if post.author == user %}
