@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, Http404, redirect
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
@@ -15,8 +15,16 @@ def post_detail(request, pk):   # primary key
 
 def post_new(request):
     if request.method == 'POST':
-        pass
-    else:
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+        else:
+            raise Http404
+    else:                       # GET
         form = PostForm()
 
     return render(request, 'blog/post_edit.html', locals())
