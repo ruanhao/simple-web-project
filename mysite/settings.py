@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'blog',
+    'users',
     'bootstrap3',
 ]
 
@@ -126,3 +127,6 @@ STATIC_URL = '/static/'
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
+
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/blog/'

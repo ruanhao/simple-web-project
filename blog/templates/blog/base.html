@@ -9,7 +9,15 @@
     </head>
     <body>
 	<h1><a href="{% url 'post_list' %}">Haoruan's Blog</a></h1>
-	<a href="{% url 'post_new' %}">new post</a>
+	{% if user.is_authenticated %}
+	    <p>
+		hello, {{ user.username }}
+	    </p>
+	    <a href="{% url 'logout' %}">logout</a>
+	    <a href="{% url 'post_new' %}">new post</a>
+	{% else %}
+	    <a href="{% url 'login' %}">login</a>
+	{% endif %}
 	<br/>
 	<br/>
 	{% block content %}
