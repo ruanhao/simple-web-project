@@ -1,20 +1,10 @@
-{% load bootstrap3 %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-	<meta charset="utf-8">
-	<title>My blog</title>
-	{% bootstrap_css %}
-	{% bootstrap_javascript %}
-    </head>
-    <body>
-	<div>Haoruan's Blog</div>
-	{% for post in posts %}
-	    <div>
-		<h1><a href="">{{ post.title }}</a></h1>
-		<p>published: {{ post.published_date }}</p>
-		<p>{{ post.text | linebreaksbr }}</p>
-	    </div>
-	{% endfor %}
-    </body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+	<div>
+	    <p><a href="">{{ post.title }}</a></p>
+	    <p>published: {{ post.published_date }}</p>
+	    <p>{{ post.text | linebreaksbr }}</p>
+	</div>
+    {% endfor %}
+{% endblock %}

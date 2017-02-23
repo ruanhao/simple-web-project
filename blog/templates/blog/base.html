@@ -1,0 +1,16 @@
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+	<title>My blog</title>
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+    </head>
+    <body>
+	<div>Haoruan's Blog</div>
+	<br/>
+	{% block content %}
+        {% endblock %}
+    </body>
+</html>
