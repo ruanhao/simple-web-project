@@ -43,3 +43,8 @@ def post_edit(request, pk):
     else:                       # GET
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', locals())
+
+def post_remove(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('post_list')

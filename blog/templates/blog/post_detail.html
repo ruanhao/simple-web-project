@@ -9,4 +9,5 @@
 	<p>{{ post.text | linebreaksbr }}</p>
     </div>
     <a href="{% url 'post_edit' pk=post.pk %}">edit</a>
+    <a href="{% url 'post_remove' pk=post.pk %}">delete</a>
 {% endblock %}
