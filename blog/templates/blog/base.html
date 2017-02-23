@@ -8,20 +8,29 @@
 	{% bootstrap_javascript %}
     </head>
     <body>
-	<h1><a href="{% url 'post_list' %}">Blogs</a></h1>
-	{% if user.is_authenticated %}
-	    <p>
-		hello, {{ user.username }}
-	    </p>
-	    <a href="{% url 'logout' %}">logout</a>
-	    <a href="{% url 'post_new' %}">new post</a>
-	{% else %}
-	    <a href="{% url 'login' %}">login</a>
-	    <a href="{% url 'register' %}">register</a>
-	{% endif %}
-	<br/>
-	<br/>
-	{% block content %}
-        {% endblock %}
+	<div class="container">
+	    <div class="jumbotron">
+		{% if user.is_authenticated %}
+		    <div class="row">
+			<div class="col-md-10"></div>
+			<div class="col-md-2">
+			    <strong>{{ user.username }}</strong> - <a href="{% url 'post_list' %}">Home</a> - <a href="{% url 'logout' %}">logout</a>
+			</div>
+		    </div>
+		{% endif %}
+		<h1>Write Your Blogs</h1>
+		<p>A repository to record your daily life</p>
+		{% if not user.is_authenticated %}
+		    <p>
+			<a class="btn btn-primary btn-default" href="{% url 'login' %}" role="button">Login</a>
+			<a class="btn btn-primary btn-default" href="{% url 'register' %}" role="button">Register</a>
+		    </p>
+		{% else %}
+		    <a class="btn btn-primary btn-default" href="{% url 'post_new' %}" role="button">Post New</a>
+		{% endif %}
+	    </div>
+	    {% block content %}
+            {% endblock %}
+	</div>
     </body>
 </html>
