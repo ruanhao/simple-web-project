@@ -9,16 +9,20 @@
     </head>
     <body>
 	<div class="container">
-	    <div class="jumbotron">
+	    <div class="jumbotron" style="padding: 1em">
 		{% if user.is_authenticated %}
 		    <div class="row">
-			<div class="col-md-10"></div>
-			<div class="col-md-2">
-			    <strong>{{ user.username }}</strong> - <a href="{% url 'post_list' %}">Home</a> - <a href="{% url 'logout' %}">logout</a>
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
+			    <ol class="breadcrumb">
+				<li><a href="#">{{ user.username }}</a></li>
+				<li><a href="{% url 'post_list' %}">Home</a></li>
+				<li><a href="{% url 'logout' %}" style="color: grey">logout</a></li>
+			    </ol>
 			</div>
 		    </div>
 		{% endif %}
-		<h1>Write Your Blogs</h1>
+		<h2>Write Your Blogs</h2>
 		<p>A repository to record your daily life</p>
 		{% if not user.is_authenticated %}
 		    <p>
@@ -26,7 +30,7 @@
 			<a class="btn btn-primary btn-default" href="{% url 'register' %}" role="button">Register</a>
 		    </p>
 		{% else %}
-		    <a class="btn btn-primary btn-default" href="{% url 'post_new' %}" role="button">Post New</a>
+		    <a class="btn btn-primary btn-sm" href="{% url 'post_new' %}" role="button">Post New</a>
 		{% endif %}
 	    </div>
 	    {% block content %}
