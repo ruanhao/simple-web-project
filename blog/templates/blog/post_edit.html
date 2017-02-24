@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
+{% load wysiwyg %}
 
 {% block content %}
-<h1>New post</h1>
 
 {% if form.errors %}
     <p>content is invalid, please modify</p>
@@ -9,7 +9,17 @@
 
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
+
+    <div class="form-group">
+	<label for="id_title">{{ form.title.label_tag }}</label>
+	<input type="text" maxlength="100" class="form-control" name="title" id="id_title" value="{{ form.title.value }}" required>
+	<br/>
+	<label for="id_text">{{ form.text.label_tag }}</label>
+	<textarea class="form-control" id="id_text" rows="30" name="text" required>{{ form.text.value }}</textarea>
+	{% wysiwyg_editor "id_text" %}
+    </div>
+
+    {#{ form.as_p }#}
+    <button type="submit">submit</button>
 </form>
 {% endblock %}

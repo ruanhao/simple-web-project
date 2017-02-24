@@ -4,7 +4,7 @@
     <div>
 	<h1>{{ post.title }}</h1>
 	<p>created: {{ post.created_date }} by {{ post.author.username }}</p>
-	<p>{{ post.text | linebreaksbr }}</p>
+	<p>{{ post.text | safe | linebreaksbr }}</p>
     </div>
     {% if post.author == user %}
 	<a class="btn btn-xs btn-success" href="{% url 'post_edit' pk=post.pk %}">edit</a>

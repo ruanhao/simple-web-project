@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'blog',
     'users',
     'bootstrap3',
+    'django_wysiwyg',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,7 @@ BOOTSTRAP3 = {
 
 LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/blog/'
+
+# Setting for django-wysiwyg
+# DJANGO_WYSIWYG_FLAVOR = "tinymce"
+DJANGO_WYSIWYG_FLAVOR = "tinymce_advanced"

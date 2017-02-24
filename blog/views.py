@@ -26,7 +26,6 @@ def post_new(request):
             return redirect('post_detail', pk=post.pk)
     else:                       # GET
         form = PostForm()
-
     return render(request, 'blog/post_edit.html', locals())
 
 @login_required
@@ -38,8 +37,7 @@ def post_edit(request, pk):
             post = form.save(commit=False)
             post.save()
             return redirect('post_detail', pk=post.pk)
-    else:                       # GET
-        form = PostForm(instance=post)
+    form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', locals())
 
 @login_required
