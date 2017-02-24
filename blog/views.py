@@ -7,7 +7,7 @@ from .forms import PostForm
 # Create your views here.
 
 def post_list(request):
-    posts = Post.objects.all().order_by('created_date')
+    posts = Post.objects.all().order_by('-created_date')
     return render(request, 'blog/post_list.html', locals())
 
 @login_required
